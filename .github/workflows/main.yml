@@ -20,5 +20,11 @@ jobs:
           java-version: 11
           distribution: temurin
 
+      - name: Start API Server
+        run: java -jar src/test/resources/app-mbank.jar &
+      
+      - name: Wait for server
+        run: sleep 10
+
       - name: Build and test with Gradle
         run: ./gradlew test
